@@ -1,0 +1,16 @@
+<h3>Fweets</h3>
+<% @tweets.each do |tweet| %>
+  <p><strong><%=tweet.user.username %></strong> - <%= tweet.message %></p>
+<% end %>
+
+<% if session[:user_id] %>
+  <h3>Add a Fweet</h3>
+  <form action="/tweets" method="POST">
+    <input type="hidden" name="user_id" value=<%= session[:user_id] %>>
+
+    Message: <input class="form-control" type="text" name="message">
+    <input type="submit" class="btn btn-default">
+  </form>
+<% end %>
+
+
